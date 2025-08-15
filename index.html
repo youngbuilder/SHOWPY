@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHOWPY 쇼핑몰</title>
+  <title>SHOWPY</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,36 +13,70 @@
   <div class="logo">
     <img src="img/SHOWPY.png" alt="SHOWPY 로고">
   </div>
-
-<nav class="menu">
-  <a href="#home">홈</a>
-  <a href="#product">상품</a>
-  <a href="#Q&A">문의</a>
-</nav>
-
-<main>
-  <div id="product" style="display:none;">상품 화면</div>
-  <div id="Q&A" style="display:none;">문의 화면</div>
-</main>
-
+  <nav class="menu">
+    <a href="#home">홈</a>
+    <a href="#product">상품</a>
+    <a href="#qna">문의</a>
+  </nav>
 </header>
 
 <!-- 메인 콘텐츠 -->
 <main>
   <h1>인기 상품</h1>
-<div class="product-card">
-    <img src="img/pd1.png" alt="상품1">
-     <h2>상품 1</h2>
-     <p>₩19,900</p>
-     <button class="add-cart" data-name="상품 1" data-price="19900">장바구니 담기</button>
+
+  <!-- 상품 목록 -->
+  <div class="product-grid" id="productGrid">
+    <div class="product-card">
+      <img src="img/pd1.png" alt="상품1">
+      <h2>상품 1</h2>
+      <p>₩19,900</p>
+      <button class="add-cart" data-name="상품 1" data-price="19900">장바구니 담기</button>
     </div>
     <div class="product-card">
       <img src="img/pd2.png" alt="상품2">
       <h2>상품 2</h2>
       <p>₩29,900</p>
+      <button class="add-cart" data-name="상품 2" data-price="29900">장바구니 담기</button>
     </div>
     <div class="product-card">
       <img src="img/pd3.png" alt="상품3">
       <h2>상품 3</h2>
       <p>₩39,900</p>
+      <button class="add-cart" data-name="상품 3" data-price="39900">장바구니 담기</button>
     </div>
+    <div class="product-card">
+      <img src="img/pd4.png" alt="상품4">
+      <h2>상품 4</h2>
+      <p>₩49,900</p>
+      <button class="add-cart" data-name="상품 4" data-price="49900">장바구니 담기</button>
+    </div>
+    <div class="product-card">
+      <img src="img/pd5.png" alt="상품5">
+      <h2>상품 5</h2>
+      <p>₩59,900</p>
+      <button class="add-cart" data-name="상품 5" data-price="59900">장바구니 담기</button>
+    </div>
+    <div class="product-card">
+      <img src="img/pd6.png" alt="상품6">
+      <h2>상품 6</h2>
+      <p>₩69,900</p>
+      <button class="add-cart" data-name="상품 6" data-price="69900">장바구니 담기</button>
+    </div>
+    <div class="product-card">
+      <img src="img/pd7.png" alt="상품7">
+      <h2>상품 7</h2>
+      <p>₩79,900</p>
+      <button class="add-cart" data-name="상품 7" data-price="79900">장바구니 담기</button>
+    </div>
+    <div class="product-card">
+      <img src="img/pd8.png" alt="상품8">
+      <h2>상품 8</h2>
+      <p>₩89,900</p>
+      <button class="add-cart" data-name="상품 8" data-price="89900">장바구니 담기</button>
+    </div>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
