@@ -1,13 +1,15 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CartPage from "./SHOWPY/CartPage.tsx";
-import ProductPage from "./SHOWPY/ProductPage.tsx";
+import Home from "./SHOWPY/1Home.tsx";
+import CartPage from "./SHOWPY/3CartPage.tsx";
+import ProductPage from "./SHOWPY/2ProductPage.tsx";
+
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ProductPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/product" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
       </Routes>
     </Router>

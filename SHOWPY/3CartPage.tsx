@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./cart.css";
 
 interface CartItem {
@@ -30,9 +30,10 @@ export default function CartPage() {
           <img src="./my-shop/public/img/SHOWPY.png"/>
         </div>
         <nav className="menu">
-          <a href="/product">홈</a>
-          <a href="/product">상품</a>
-          <a href="/cart">장바구니 ({cart.length})</a>
+          <a href="./home">홈</a>
+          <a href="./product">상품</a>
+          <a href="./cart">장바구니 ({cart.length})</a>
+          <a href="./contact">문의</a>
         </nav>
       </header>
 

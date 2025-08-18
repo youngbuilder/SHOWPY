@@ -33,10 +33,10 @@ export default function ProductPage() {
           <img src="img/SHOWPY.png" alt="SHOWPY 로고" />
         </div>
         <nav className="menu">
-          <a href="/cart">장바구니 ({cart.length})</a>
-          <a href="#home">홈</a>
-          <a href="#product">상품</a>
-          <a href="#qna">문의</a>
+          <a href="./home">홈</a>
+          <a href="./product">상품</a>
+          <a href="./cart">장바구니 ({cart.length})</a>
+          <a href="./contact">문의</a>
         </nav>
       </header>
 
