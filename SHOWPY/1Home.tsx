@@ -8,7 +8,7 @@ interface CartItem {
 }
 
 export default function HomePage() {
-  const [cart, setCart] = useState<CartItem[]>([]); // ✅ any 대신 CartItem[] 사용
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     const savedCart: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -51,7 +51,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <footer className="footer">
+      <footer className="trademark">
         <p>2025 SHOWPY™</p>
       </footer>
     </div>

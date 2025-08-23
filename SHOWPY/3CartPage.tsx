@@ -27,7 +27,7 @@ export default function CartPage() {
     <div>
       <header className="top-bar">
         <div className="logo">
-          <img src="./my-shop/public/img/SHOWPY.png"/>
+          <img src="img/SHOWPY.png"/>
         </div>
         <nav className="menu">
           <a href="./home">홈</a>

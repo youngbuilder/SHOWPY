@@ -28,7 +28,7 @@ body {
 }
 
 .menu a {
-  color: white;
+  color: rgb(255, 255, 255);
   margin-left: 15px;
   text-decoration: none;
 }
@@ -54,7 +54,7 @@ main h1 {
   border-radius: 8px;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
 
