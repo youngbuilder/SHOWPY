@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./product.css";
 
-interface CartItem {
+export interface CartItem {
   name: string;
   price: number;
 }
@@ -9,22 +9,51 @@ interface CartItem {
 export default function ProductPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const [sortType, setSortType] = useState("priceAsc");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCart(savedCart);
-  }, []);
+  const products = [
+    { id: 1, name: "상품 1", price: 10000, score: 3.8, img: "img/pd1.png" },
+    { id: 2, name: "상품 2", price: 20000, score: 4.2, img: "img/pd2.png" },
+    { id: 3, name: "상품 3", price: 30000, score: 4.9, img: "img/pd3.png" },
+    { id: 4, name: "상품 4", price: 40000, score: 2.7, img: "img/pd4.png" },
+    { id: 5, name: "상품 5", price: 50000, score: 4.0, img: "img/pd5.png" },
+    { id: 6, name: "상품 6", price: 60000, score: 3.5, img: "img/pd6.png" },
+    { id: 7, name: "상품 7", price: 70000, score: 4.6, img: "img/pd7.png" },
+    { id: 8, name: "상품 8", price: 80000, score: 4.8, img: "img/pd8.png" },
+  ];
 
-  const updateCartCount = (newCart: CartItem[]) => {
+  // 장바구니 추가
+  const addToCart = (item: CartItem) => {
+    const newCart = [...cart, item];
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
-  };
-
-  const addToCart = (name: string, price: number) => {
-    const newCart = [...cart, { name, price }];
-    updateCartCount(newCart);
     setModalVisible(true);
   };
+
+  // 정렬 함수
+  const sortedProducts = [...products].sort((a, b) => {
+    switch (sortType) {
+      case "priceAsc":
+        return a.price - b.price;
+      case "priceDesc":
+        return b.price - a.price;
+      case "scoreAsc":
+        return a.score - b.score;
+      case "scoreDesc":
+        return b.score - a.score;
+      default:
+        return 0;
+    }
+  });
+
+  // 드롭다운 옵션
+  const sortOptions = [
+    { value: "priceAsc", label: "가격 낮은순" },
+    { value: "priceDesc", label: "가격 높은순" },
+    { value: "scoreAsc", label: "점수 낮은순" },
+    { value: "scoreDesc", label: "점수 높은순" },
+  ];
 
   return (
     <div>
@@ -42,24 +71,53 @@ export default function ProductPage() {
 
       <main>
         <h1>인기 상품</h1>
+
+        {/* 정렬 드롭다운 */}
+        <div className="sort-dropdown">
+          <button onClick={() => setDropdownOpen(!dropdownOpen)}>
+            {
+              sortOptions.find((opt) => opt.value === sortType)?.label
+            }{" "}
+            ▼
+          </button>
+          {dropdownOpen && (
+            <ul className="dropdown-menu">
+              {sortOptions.map((opt) => (
+                <li key={opt.value}>
+                  <button
+                    onClick={() => {
+                      setSortType(opt.value);
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    {opt.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {/* 상품 그리드 */}
         <div className="product-grid">
-          {Array.from({ length: 8 }, (_, i) => {
-            const name = `상품 ${i + 1}`;
-            const price = 19900 + i * 10000;
-            return (
-              <div key={i} className="product-card">
-                <img src={`img/pd${i + 1}.png`} alt={name} />
-                <h2>{name}</h2>
-                <p>₩{price.toLocaleString()}</p>
-                <button className="add-cart" onClick={() => addToCart(name, price)}>
-                  장바구니 담기
-                </button>
-              </div>
-            );
-          })}
+          {sortedProducts.map((p) => (
+            <div key={p.id} className="product-card">
+              <img src={p.img} alt={p.name} />
+              <h2>{p.name}</h2>
+              <p>{p.price.toLocaleString()}원</p>
+              <p>점수: {p.score}</p>
+              <button
+                className="add-cart"
+                onClick={() => addToCart({ name: p.name, price: p.price })}
+              >
+                장바구니 담기
+              </button>
+            </div>
+          ))}
         </div>
       </main>
 
+      {/* 장바구니 알림 모달 */}
       {modalVisible && (
         <div className="modal" style={{ display: "flex" }}>
           <div className="modal-content">
@@ -68,7 +126,10 @@ export default function ProductPage() {
               <button className="btn-continue" onClick={() => setModalVisible(false)}>
                 계속 쇼핑하기
               </button>
-              <button className="btn-cart" onClick={() => (window.location.href = "/cart")}>
+              <button
+                className="btn-cart"
+                onClick={() => (window.location.href = "/cart")}
+              >
                 장바구니로 이동
               </button>
             </div>
