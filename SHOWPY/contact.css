@@ -9,7 +9,10 @@
   font-family: 'Arial Black', sans-serif;
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column
+
 }
 
 .vision p {
@@ -18,4 +21,10 @@
   color: #555;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.section {
+  display: flex;
+  text-align: center;
 }

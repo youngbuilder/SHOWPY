@@ -1,9 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main h1 {
+  font-size: 4rem; 
+  font-weight: bold; 
+  text-align: center; 
+}
+
+main div p {
+  font-size: 1.5rem; 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+
 #cartItems {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
   justify-content: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .cart-item {
@@ -31,6 +52,8 @@
   object-fit: cover;
   border-radius: 4px;
 }
+
+
 
 .cart-item-info {
   margin-bottom: 10px;

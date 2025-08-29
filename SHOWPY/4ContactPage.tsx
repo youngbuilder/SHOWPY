@@ -24,6 +24,7 @@ export default function HomePage() {
         <nav className="menu">
           <a href="/home">홈</a>
           <a href="/product">상품</a>
+          {/*<a href="/event">이벤트</a>*/}
           <a href="/cart">장바구니 ({cart.length})</a>
           <a href="/contact">문의</a>
         </nav>

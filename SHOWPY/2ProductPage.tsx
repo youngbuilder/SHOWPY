@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import "./product.css";
 
 export interface CartItem {
@@ -11,6 +11,11 @@ export default function ProductPage() {
   const [modalVisible, setModalVisible] = useState(false);
   const [sortType, setSortType] = useState("priceAsc");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCart(savedCart);
+  }, []);
 
   const products = [
     { id: 1, name: "상품 1", price: 10000, score: 3.8, img: "img/pd1.png" },
@@ -30,6 +35,8 @@ export default function ProductPage() {
     localStorage.setItem("cart", JSON.stringify(newCart));
     setModalVisible(true);
   };
+
+
 
   // 정렬 함수
   const sortedProducts = [...products].sort((a, b) => {
@@ -62,10 +69,11 @@ export default function ProductPage() {
           <img src="img/SHOWPY.png" alt="SHOWPY 로고" />
         </div>
         <nav className="menu">
-          <a href="./home">홈</a>
-          <a href="./product">상품</a>
-          <a href="./cart">장바구니 ({cart.length})</a>
-          <a href="./contact">문의</a>
+          <a href="/home">홈</a>
+          <a href="/product">상품</a>
+          {/*<a href="/event">이벤트</a>*/}
+          <a href="/cart">장바구니 ({cart.length})</a>
+          <a href="/contact">문의</a>
         </nav>
       </header>
 
